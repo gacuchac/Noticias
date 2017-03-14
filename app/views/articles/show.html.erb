@@ -1,17 +1,13 @@
-<p>
-  <strong>Titulo:</strong>
-  <%= @article.titulo %>
-</p>
-
-<p>
-  <strong>Bajada:</strong>
-  <%= @article.bajada %>
-</p>
-
-<p>
-  <strong>Cuerpo:</strong>
-  <%= @article.cuerpo %>
-</p>
+<div class="card card-outline-primary" >
+  <div class="card-block">
+    <h2 class="card-title"><%= @article.titulo %></h2>
+    <h4 class="card-subtitle"><%= @article.bajada %></h4>
+    <p class="card-text">
+    <%= @article.cuerpo %></p>
+    <p class="card-text" > <small class="text-muted">Creado:
+      <%= @article.created_at %> </small></p>
+  </div>
+</div>
 
 <h2>Comentarios</h2>
 <%= render @article.comments %>
@@ -19,8 +15,8 @@
 <h2>Agregar un comentario:</h2>
 <%= render 'comments/form' %>
 
-<%= link_to 'Editar', edit_article_path(@article) %> |
+<%= link_to 'Editar', edit_article_path(@article), :class => "btn btn-primary" %> |
 
-<%= link_to 'Administrar', articles_path %> |
+<%= link_to 'Administrar', articles_path, :class => "btn btn-primary" %> |
 
-<%= link_to 'Inicio', root_path %>
+<%= link_to 'Inicio', root_path, :class => "btn btn-primary" %>

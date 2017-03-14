@@ -1,26 +1,22 @@
 <h1>Administrar Noticias</h1>
-
-<table>
-  <tr>
-    <th>Titulo</th>
-    <th>Bajada</th>
-    <th>Cuerpo</th>
-    <th>Fecha de Publicación</th>
-  </tr>
-
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.titulo %></td>
-      <td><%= article.bajada %></td>
-      <td><%= article.cuerpo %></td>
-      <td><%= article.created_at %></td>
-      <td><%= link_to 'Mostrar', article_path(article) %></td>
-      <td><%= link_to 'Editar', edit_article_path(article) %></td>
-      <td><%= link_to 'Destruir', article_path(article),
-              method: :delete,
-              data: { confirm: 'Estás seguro?' } %></td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to 'Nuevo Articulo', new_article_path %>
-<%= link_to 'Inicio', root_path %>
+<%= link_to 'Nuevo Articulo', new_article_path, :class => "btn btn-primary" %>
+<%= link_to 'Inicio', root_path, :class => "btn btn-primary" %>
+<% @articles.each do |article| %>
+  <div class="d-inline-block m--2">
+    <div class="card card-outline-primary" >
+      <div class="card-block">
+        <h2 class="card-title"><%= article.titulo %></h2>
+        <h4 class="card-subtitle"><%= article.bajada %></h4>
+        <p class="card-text">
+        <%= article.cuerpo %></p>
+        <p class="card-text" > <small class="text-muted">Creado:
+          <%= article.created_at %> </small></p>
+          <%= link_to 'Mostrar', article_path(article), :class => "btn btn-primary" %> |
+          <%= link_to 'Editar', edit_article_path(article), :class => "btn btn-primary" %> |
+          <%= link_to 'Destruir', article_path(article), :class => "btn btn-primary" ,
+                  method: :delete,
+                  data: { confirm: '¿Está seguro?' } %>
+      </div>
+    </div>
+  </div>
+<% end %>
